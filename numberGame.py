@@ -4,7 +4,7 @@
 
 import random as r
 
-# a=max_count,  b=sol  max=highest number
+# a=max_count,  b=sol  max=highest chance
 
 def guess(a,b,max):
     c=r.randint(0,max)
