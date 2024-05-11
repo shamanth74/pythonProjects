@@ -1,4 +1,6 @@
-#This program helps tidy up your files by renaming them numerically within a specified path and file type. You input the path where the files are located and specify the type of files you want to tidy. Then, the program renames those files numerically, starting from 1, while preserving their original file type. If no files of that type are found, it informs you. Once completed, it confirms successful renaming.
+#This program helps tidy up your files by renaming them numerically within a specified path and file type. You input the path where the files are located and 
+#specify the type of files you want to tidy. Then, the program renames those files numerically, starting from 1, while preserving their original file type. 
+#If no files of that type are found, it informs you. Once completed, it confirms successful renaming.
 
 import os
 class ClearClutter:
