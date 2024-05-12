@@ -1,4 +1,6 @@
-#This program helps organize files by moving them into folders based on their type. You provide a path where the files are located and specify the type of files you want to organize. Then, the program checks if there are files of that type in the specified path. If yes, it creates a folder for that type and moves those files into it. If the folder already exists, it moves the files into it. If no files of that type are found, it informs you.
+#This program helps organize files by moving them into folders based on their type. You provide a path where the files are located and specify the type 
+#of files you want to organize. Then, the program checks if there are files of that type in the specified path. If yes, it creates a folder for that type 
+#and moves those files into it. If the folder already exists, it moves the files into it. If no files of that type are found, it informs you.
 
 import os
 class Organize:
