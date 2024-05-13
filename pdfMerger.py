@@ -1,22 +1,49 @@
+#This code helps to merge pdfs in a particular folder and can store pdfs in user specified path
+#the order to merge is as the name of the files in an alphabetical order
+
+
 import PyPDF2
+import os
 
-# List of PDF files to merge
-pdf_files = ["document1.pdf", "document2.pdf", "document3.pdf"]
 
-# Create a PdfWriter object
-pdf_writer = PyPDF2.PdfWriter()
+class Operations:
+    def __init__(self,path):
+        self.path=path
+        if not os.path.exists(self.path):
+            print("Specified path doesn't exists")
+            exit()
+        files=os.listdir(self.path)
+        i=0
+        global pdf
+        pdf=[]
+        for file in files:
+            if file.endswith(".pdf"):
+                pdf.append(file)
+                i=i+1
+        if i<2:
+            print("Path entered contains no pdf files or Less than 2 files")
+            exit()
+        else:
+            print(f"\nMerging {pdf} files......\n")
 
-# Loop through each PDF file
-for pdf_file in pdf_files:
-    # Open the PDF file in binary mode
-    with open(pdf_file, "rb") as file:
-        # Create a PdfReader object
-        pdf_reader = PyPDF2.PdfReader(file)
-        
-        # Loop through each page and add it to the PdfWriter object
-        for page in pdf_reader.pages:
-            pdf_writer.add_page(page)
 
-# Write the merged content to a new PDF file
-with open("merged.pdf", "wb") as output_file:
-    pdf_writer.write(output_file)
+    def merge_pdfs(self,input_dir, output_dir):
+        merger = PyPDF2.PdfMerger()
+        [merger.append(pdf) for pdf in [open(os.path.join(input_dir, file), 'rb') for file in os.listdir(input_dir) if file.endswith('.pdf')]]
+        exist=os.listdir(output_dir)
+        for exists in exist:
+            if exists=="merged.pdf":
+                print("\nFile named Merged.pdf already exists\nGive another path to store and Try again\n")
+                exit()
+
+        merger.write(os.path.join(output_dir, 'merged.pdf'))
+        merger.close()
+
+
+path_i=(input("Enter path where pdf file lies --> "))
+m=Operations(path_i)
+
+path_d=(input("Enter path where Merged pdf file to be stored --> "))
+m.merge_pdfs(f"{path_i}",f"{path_d}")
+
+print(f"\nMerged file stored in {path_d}")
