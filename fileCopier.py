@@ -1,3 +1,13 @@
+#This Python script helps you copy files of a specific type (e.g., PDF) from a source directory to a target directory. It checks each file in the source 
+#directory and its subdirectories. If the file matches the specified type, and it hasn't been copied before, it copies it to the target directory. The 
+#script then prints out the total number of files copied.
+
+
+
+
+
+
+
 import os
 import shutil
 
